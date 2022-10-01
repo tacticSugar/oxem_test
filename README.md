@@ -8,7 +8,7 @@
 
 <a href="https://doc.clickup.com/2659433/p/h/2h539-67321/1cdca9cd67897c8">Задание</a>
 
-В проекте использовался React + SCSS
+В проекте использовался TypeScript + React + SCSS
 
 
 ## Команды
