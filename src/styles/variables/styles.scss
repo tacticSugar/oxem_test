@@ -1,0 +1,45 @@
+@import './breakpoints.scss';
+
+@mixin heading {
+  font-family: Nekst;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 90%;
+
+  @include sm {
+    font-size: 34px;
+  }
+}
+
+@mixin h2-30 {
+  font-family: Nekst;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+@mixin h2-22 {
+  font-family: Nekst;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 20px;
+}
+
+@mixin h3-18 {
+  font-family: Nekst;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+@mixin label {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}

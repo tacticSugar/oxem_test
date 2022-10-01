@@ -1,0 +1,9 @@
+@import '../../styles/variables/index.scss';
+
+.result {
+  @include heading;
+  color: $gray;
+  @include sm {
+    @include h2-22;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../styles/variables/index.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  @include label;
+  color: $gray;
+
+  @include sm {
+    font-size: 14px;
+    line-height: 136%;
+  }
+}
