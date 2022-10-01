@@ -1,6 +1,6 @@
 ## Разные ссылки
 
-- [Ссылка на Heroku](https://oxem-calculator.herokuapp.com/) Может долго загружаться!
+<a href="https://oxem-calculator.herokuapp.com/">Ссылка на Heroku</a> Может долго загружаться!
 
 ## Общая информация
 
