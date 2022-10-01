@@ -29,10 +29,3 @@ $screen-xl-min: 1440px;
     @content;
   }
 }
-
-// Extra large devices
-// @mixin xl {
-//   @media (max-width: #{$screen-xl-min}) {
-//     @content;
-//   }
-// }

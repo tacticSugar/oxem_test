@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './assets/fonts/fonts.scss'
 import 'scss-reset/_reset.scss'
@@ -12,10 +12,47 @@ import { WithLabel } from './components/WithLabel/WithLabel'
 import { Input } from './components/Input/Input'
 
 function App() {
-  const [priceAuto, setPriceAuto] = useState(0)
-  const [firstPay, setFirstPay] = useState(0)
+  const [priceAuto, setPriceAuto] = useState(1000000)
+  const [firstPay, setFirstPay] = useState(100000)
   const [lisingPeriod, setLisingPeriod] = useState(60)
   const [isLoading, setIsLoading] = useState(false)
+
+  function computeFirstPayMeta() {
+    const resultFirstPay = Math.round((firstPay / priceAuto) * 100)
+    return resultFirstPay
+  }
+
+  function computeFirstPayMin() {
+    const computedMin = Math.round(priceAuto * 0.1)
+    return computedMin
+  }
+
+  function computeFirstPayMax() {
+    const resultFirstPayMax = Math.round(priceAuto * 0.6)
+    return resultFirstPayMax
+  }
+
+  useEffect(() => {
+    if (firstPay < Math.round(priceAuto * 0.1)) {
+      setFirstPay(priceAuto * 0.1)
+    }
+    if (firstPay > Math.round(priceAuto * 0.6)) {
+      setFirstPay(priceAuto * 0.6)
+    }
+  }, [priceAuto])
+
+  function computeMonthPay() {
+    const monthPay =
+      (priceAuto - firstPay) *
+      ((0.035 * Math.pow(1 + 0.035, lisingPeriod)) /
+        (Math.pow(1 + 0.035, lisingPeriod) - 1))
+    return monthPay
+  }
+
+  function computeLising() {
+    const lisingDoc = firstPay + lisingPeriod * computeMonthPay()
+    return lisingDoc
+  }
 
   async function handleButtonClick() {
     if (isLoading) return
@@ -43,8 +80,8 @@ function App() {
             <Input
               meta={'₽'}
               value={priceAuto}
-              step={1000}
-              min={0}
+              step={5000}
+              min={1000000}
               max={6000000}
               onChange={setPriceAuto}
             />
@@ -52,12 +89,12 @@ function App() {
 
           <WithLabel label={'Первоначальный взнос'}>
             <Input
-              meta={'13%'}
+              meta={`${computeFirstPayMeta()}%`}
               isMetaBox
               value={firstPay}
-              step={100}
-              min={0}
-              max={3000000}
+              step={5000}
+              min={computeFirstPayMin()}
+              max={computeFirstPayMax()}
               onChange={setFirstPay}
             />
           </WithLabel>
@@ -76,11 +113,11 @@ function App() {
 
         <div className={styles.resultGrid}>
           <WithLabel label={'Сумма договора лизинга'}>
-            <CalcResult result={priceAuto * 2} />
+            <CalcResult result={computeLising()} />
           </WithLabel>
 
-          <WithLabel label={'Сумма договора лизинга'}>
-            <CalcResult result={priceAuto * 2} />
+          <WithLabel label={'Ежемесячный платеж от'}>
+            <CalcResult result={computeMonthPay()} />
           </WithLabel>
 
           <Button
