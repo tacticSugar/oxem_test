@@ -1,6 +1,7 @@
 @import '../../styles/variables/index.scss';
 
 .wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -37,4 +38,12 @@
       @include h2-22;
     }
   }
+}
+
+.slider {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 24px;
 }
