@@ -6,5 +6,5 @@ type Props = {
   result: number
 }
 export function CalcResult(props: Props) {
-  return <div className={styles.result}>{numFormat(props.result)}</div>
+  return <div className={styles.result}>{numFormat(props.result, true)}</div>
 }

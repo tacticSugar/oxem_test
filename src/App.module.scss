@@ -1,7 +1,17 @@
 @import './styles/variables/index.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .container {
   max-width: $screen-xl-min;
-  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
   margin: 0 auto;
   padding: 0 48px;
@@ -14,5 +24,41 @@
 
   @include sm {
     padding: 0 20px;
+  }
+}
+
+.heading {
+  max-width: 753px;
+}
+
+.inputsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 -16px;
+  row-gap: 32px;
+  & > * {
+    margin: 0 16px;
+  }
+
+  @include md {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resultGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 -16px;
+  row-gap: 32px;
+  & > * {
+    margin: 0 16px;
+  }
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include sm {
+    grid-template-columns: 1fr;
   }
 }
