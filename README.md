@@ -6,11 +6,11 @@
 
 В проекте использовался TypeScript + React + SCSS
 
-<a href="https://oxem-calculator.herokuapp.com/">Ссылка на Heroku</a>
+<a href="https://oxem-calculator.herokuapp.com/">Ссылка на Heroku\*</a>
 
-*может долго загружаться!
+\*может долго загружаться!
 
 ## Команды
 
-Установка `npm install`  
+Установка `npm install`
 Запуск `npm run start`

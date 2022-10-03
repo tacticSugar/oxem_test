@@ -39,7 +39,7 @@ function App() {
     if (firstPay > Math.round(priceAuto * 0.6)) {
       setFirstPay(priceAuto * 0.6)
     }
-  }, [priceAuto])
+  }, [firstPay, priceAuto])
 
   function computeMonthPay() {
     const monthPay =
