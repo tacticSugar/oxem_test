@@ -21,9 +21,10 @@ export function Input(props: Props) {
 
   function inputChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
     const rawValue = event.target.value.replace(/\D/g, '')
+    if (!rawValue) return
     const num = parseInt(rawValue)
+    if (num <= props.min) return
     if (num > props.max) return
-    if (num < props.min) return
     props.onChange(num)
   }
 
