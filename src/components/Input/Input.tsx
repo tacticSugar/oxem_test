@@ -3,7 +3,6 @@ import styles from './Input.module.scss'
 import { Range } from 'react-range'
 import { RangeTrack } from './components/RangeTrack/RangeTrack'
 import { RangeThumb } from './components/RangeThumb/RangeThumb'
-import React, { useState } from 'react'
 import { numFormat } from '../../helpers/numFormat'
 
 type Props = {
