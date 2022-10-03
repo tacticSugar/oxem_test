@@ -6,6 +6,8 @@
 
 В проекте использовался TypeScript + React + SCSS
 
+<a href="https://tourmaline-marigold-d0b1bd.netlify.app/">Ссылка на Netlify</a>
+
 <a href="https://oxem-calculator.herokuapp.com/">Ссылка на Heroku\*</a>
 
 \*может долго загружаться!
