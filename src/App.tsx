@@ -18,13 +18,19 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
 
   function computeFirstPayMeta() {
-    const resultFirstPay = Math.round((firstPay / priceAuto) * 100)
+    let resultFirstPay = Math.round((firstPay / priceAuto) * 100)
+    if (resultFirstPay > 60) {
+      resultFirstPay = 60
+    }
+    if (resultFirstPay < 10) {
+      resultFirstPay = 10
+    }
     return resultFirstPay
   }
 
   function computeFirstPayMin() {
-    const computedMin = Math.round(priceAuto * 0.1)
-    return computedMin
+    const resultFirstPayMin = Math.round(priceAuto * 0.1)
+    return resultFirstPayMin
   }
 
   function computeFirstPayMax() {
@@ -32,14 +38,15 @@ function App() {
     return resultFirstPayMax
   }
 
-  useEffect(() => {
-    if (firstPay < Math.round(priceAuto * 0.1)) {
+  function handleChangePriceAuto(num: number) {
+    if (firstPay < Math.round(num * 0.1)) {
       setFirstPay(priceAuto * 0.1)
     }
-    if (firstPay > Math.round(priceAuto * 0.6)) {
+    if (firstPay > Math.round(num * 0.6)) {
       setFirstPay(priceAuto * 0.6)
     }
-  }, [firstPay, priceAuto])
+    setPriceAuto(num)
+  }
 
   function computeMonthPay() {
     const monthPay =
@@ -83,7 +90,7 @@ function App() {
               step={5000}
               min={1000000}
               max={6000000}
-              onChange={setPriceAuto}
+              onChange={handleChangePriceAuto}
             />
           </WithLabel>
 
@@ -92,7 +99,7 @@ function App() {
               meta={`${computeFirstPayMeta()}%`}
               isMetaBox
               value={firstPay}
-              step={5000}
+              step={500}
               min={computeFirstPayMin()}
               max={computeFirstPayMax()}
               onChange={setFirstPay}
